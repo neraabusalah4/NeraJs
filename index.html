@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Page</title>
+<style>
+  .visible {
+    display: block;
+  }
+  .hidden {
+    display: none;
+  }
+  .container {
+    margin-bottom: 20px;
+  }
+  .disabled-button {
+    pointer-events: none;
+    background-color: gray;
+  }
+</style>
+</head>
+<body>
+
+<h1>Nera Page</h1>
+
+<section class="container">
+  <label for="classInput">Enter Class Name:</label>
+  <input type="text" id="classInput" />
+  <button onclick="addClassToParagraph()">Add Class</button>
+  <p id="classParagraph">This  a paragraph to add class .</p>
+</section>
+
+
+<section class="container">
+  <button onclick="toggleVisibility('1')">Nera Paragraph 1</button>
+  <p id="para1" class="visible">This is  Nera's  first paragraph .</p>
+  
+  <button onclick="toggleVisibility('2')">Nera Paragraph 2</button>
+  <p id="para2" class="visible">This is  Nera's  second paragraph .</p>
+  
+  <button onclick="toggleVisibility('3')">Nera Paragraph 3</button>
+  <p id="para3" class="visible">This is Nera's  last paragraph .</p>
+</section>
+
+<section class="container">
+  <button id="changeTextButton" onclick="changeButtonText()">Click here</button>
+</section>
+
+
+<script>
+  
+  function addClassToParagraph() {
+    const classInput = document.getElementById('classInput').value;
+    const paragraph = document.getElementById('classParagraph');
+    paragraph.classList.add(classInput);
+  }
+
+  function toggleVisibility(elementId) {
+    const element = document.getElementById(elementId);
+    if (element.classList.contains('visible')) {
+      element.classList.remove('visible');
+      element.classList.add('hidden');
+    } else {
+      element.classList.remove('hidden');
+      element.classList.add('visible');
+    }
+  }
+
+  
+  function changeButtonText() {
+    const button = document.getElementById('changeTextButton');
+    button.innerText = 'Clicked!';
+    button.classList.add('disabled-button');
+  }
+</script>
+
+</body>
+</html>
